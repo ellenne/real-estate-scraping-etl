@@ -4,6 +4,7 @@
 This is an untested Airflow implementation of the ETL pipeline
 originally written in Prefect. It is provided solely to demonstrate
 familiarity with Airflow and DAG structuring for batch ETL workloads.
+
 """
 
 from datetime import datetime
@@ -78,7 +79,7 @@ def load(**kwargs):
     con.execute(f"INSERT INTO {TABLE_NAME} SELECT * FROM tmp_df;")
     con.close()
 
-    print("✅ DuckDB DB saved as", DB_FILE)
+    print("DuckDB DB saved as", DB_FILE)
 
 with DAG(
     dag_id="pricehubble_etl_airflow",
